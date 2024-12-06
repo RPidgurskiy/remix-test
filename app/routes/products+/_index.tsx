@@ -15,8 +15,6 @@ import { ProductsList } from './components/products';
 
 //
 //
-
-export const handle = {i18n: ['common']};
 export const meta: MetaFunction = () => [{title: 'Remix App - Products'}];
 
 export const clientLoader = async () => {
