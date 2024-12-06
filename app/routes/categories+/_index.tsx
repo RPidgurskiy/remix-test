@@ -37,7 +37,8 @@ export default function Categories() {
     <>
       <Stack alignItems="flex-end" my={2}>
         <SkeletonOnLoading isLoading={isLoading}>
-          <AppButton to="/products/create" variant="contained">
+            // fixed issue with wrong route
+          <AppButton to="/categories/create" variant="contained">
             {t('common:create')}
           </AppButton>
         </SkeletonOnLoading>

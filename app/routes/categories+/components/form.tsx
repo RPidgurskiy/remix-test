@@ -2,13 +2,14 @@ import {Box} from '@mui/material';
 
 import {AppInput} from '~/global/components/app-input';
 import {AppInputSwitch} from '~/global/components/app-input-switch';
+import {useTranslation} from "react-i18next";
 
 //
 //
 
 export const CategoriesForm = () => {
-  // const {t} = useTranslation(['common', 'categories']);
-
+  const {t} = useTranslation(['common', 'categories']);
+  // fixed issue with undefined I18n library
   return (
     <>
       <AppInput
