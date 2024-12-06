@@ -1,14 +1,22 @@
 import {Link, LinkProps} from '@remix-run/react';
-import {memo} from 'react';
+import {forwardRef, memo} from 'react';
 import {useTranslation} from 'react-i18next';
 
-//
+// fixed issue with ref
 
-export const I18nLink: React.FC<LinkProps> = memo((props: LinkProps & LinkProps) => {
-  const {i18n} = useTranslation();
+export const I18nLink = memo(
+    forwardRef<HTMLAnchorElement, LinkProps & LinkProps>((props, ref) => {
+      const { i18n } = useTranslation();
 
-  return <Link {...props} to={parseI18nNavigate(props.to, i18n.language)} />;
-});
+      return (
+          <Link
+              {...props}
+              ref={ref}
+              to={parseI18nNavigate(props.to, i18n.language)}
+          />
+      );
+    })
+);
 
 I18nLink.displayName = 'I18nLink';
 
