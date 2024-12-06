@@ -10,20 +10,20 @@ export type NotificationProps = {
   headingProps?: TypographyProps;
   messages?: React.ReactNode | React.ReactNode[];
   messagesProps?: TypographyProps;
-} & AlertProps;
-
+} & Omit<AlertProps, 'variant'> & {alertType?: AlertProps['variant']};
+// fix for types
 export const Notification: React.FC<NotificationProps> = ({
   heading,
   headingProps = {variant: 'subtitle2'},
   messages,
   messagesProps = {variant: 'body2'},
   children,
-  variant = 'standard',
+  alertType = 'standard',
   sx = {mt: 1, minWidth: '50%', maxWidth: 400},
   ...props
 }: NotificationProps) => {
   return (
-    <Alert variant={variant} sx={sx} {...props}>
+    <Alert variant={alertType} sx={sx} {...props}>
       {heading ? <Typography {...headingProps}>{heading}</Typography> : null}
       {Array.isArray(messages) && messages?.length
         ? messages.map((item, index) => (
