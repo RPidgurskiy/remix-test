@@ -1,5 +1,5 @@
 import type {MetaFunction} from '@remix-run/node';
-import {Form, redirect, useNavigate} from '@remix-run/react';
+import {Form, redirect} from '@remix-run/react';
 import {useTranslation} from 'react-i18next';
 import {useSnackbar} from 'notistack';
 import * as yup from 'yup';
@@ -11,6 +11,8 @@ import {useMutationSignIn} from '~/services/auth';
 import {PageShell} from '~/global/components/page-shell';
 import {AppInputPassword} from '~/global/components/app-input-password';
 import {AppInput} from '~/global/components/app-input';
+import {useI18nNavigate} from "~/global/hooks/use-i18n-navigate";
+// change routing from useNavigate to useI18nNavigate
 
 import {apiSaveTokens} from '~/api-client/utils/tokens';
 
@@ -40,7 +42,7 @@ export default function SignIn() {
   const {t} = useTranslation(handle.i18n);
   const {enqueueSnackbar} = useSnackbar();
   const mutate = useMutationSignIn();
-  const navigate = useNavigate();
+  const navigate = useI18nNavigate();
 
   const form = useForm({
     mode: 'onChange',
