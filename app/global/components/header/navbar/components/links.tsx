@@ -8,8 +8,8 @@ import {HeaderNavbarAuthenticated} from './authenticated';
 //
 
 export const HeaderNavbarLinks = () => {
-  const {data, isLoading} = useQueryProfile({enabled: !!window.localStorage.getItem('_at')});
-
+  const {data, isLoading} = useQueryProfile({enabled: typeof window !== "undefined" && !!window.localStorage.getItem('_at')});
+  // fixed issue related to undefined window
   if (isLoading) return <HeaderNavbarSkeleton />;
 
   const profile = data?.result;
