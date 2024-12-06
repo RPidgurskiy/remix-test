@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {SyntheticEvent, useState} from 'react';
 
 //
 //
@@ -10,6 +10,7 @@ export const useToggle = (defaultValue: boolean = false) => {
     value,
     toggle: () => setValue(v => !v),
     setValue: (val: boolean) => setValue(val),
-    preventEventDefault: (event: any) => event?.preventDefault?.(),
+    // change type of event
+    preventEventDefault: (event: SyntheticEvent) => event?.preventDefault?.(),
   };
 };
